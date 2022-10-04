@@ -16,7 +16,7 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-    private int questionCounter = 1;
+    private int questionCounter = 0;
 
     @PostMapping
     public ResponseEntity<Question> saveQuestion(@RequestBody Question question) {
@@ -31,7 +31,9 @@ public class QuestionController {
     @GetMapping("/next")
     public ResponseEntity<Question> nextQuestion() {
         int numberOfQuestions = questionService.getQuestions().size();
-        return ResponseEntity.ok(questionService.getQuestionById((questionCounter++) % numberOfQuestions));
+        questionCounter = (questionCounter < numberOfQuestions) ? questionCounter + 1 : 1;
+        System.out.println(questionCounter);
+        return ResponseEntity.ok(questionService.getQuestionById((questionCounter)));
     }
 
     @GetMapping
