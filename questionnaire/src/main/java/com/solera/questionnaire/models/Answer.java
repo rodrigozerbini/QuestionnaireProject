@@ -13,7 +13,7 @@ public class Answer {
     @OneToOne(mappedBy = "answer")
     private Question question;
 
-    String text;
+    boolean text;
 
     public int getId() {
         return id;
@@ -31,20 +31,19 @@ public class Answer {
         this.question = question;
     }
 
-    public String getText() {
+    public boolean getText() {
         return text;
     }
 
-    public void setText(String text) {
+    public void setText(boolean text) {
         this.text = text;
     }
 
-    public Answer(Question question, String text) {
+    public Answer(Question question, boolean text) {
         this.question = question;
         this.text = text;
     }
 
     public Answer() {
-
     }
 }
