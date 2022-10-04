@@ -7,7 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+<<<<<<< HEAD
 @CrossOrigin(origins = {"*"}, maxAge = 4800, allowCredentials = "false")
+=======
+import java.util.List;
+
+>>>>>>> 699ba7c0e106dee806d4d71aa71269df18bccae3
 @RestController
 @RequestMapping("/questions")
 public class QuestionController {
@@ -29,6 +34,13 @@ public class QuestionController {
 
     @GetMapping("/next")
     public ResponseEntity<Question> nextQuestion() {
-        return ResponseEntity.ok(questionService.getQuestionById(questionCounter++));
+        int numberOfQuestions = questionService.getQuestions().size();
+        return ResponseEntity.ok(questionService.getQuestionById((questionCounter++) % numberOfQuestions));
     }
+
+    @GetMapping
+    public List<Question> getQuestions() {
+        return questionService.getQuestions();
+    }
+
 }
