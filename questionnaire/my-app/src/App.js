@@ -7,7 +7,7 @@ function App() {
   const [preguntaIndex, setPreguntaIndex] = React.useState(0)
 
   React.useEffect(()=>{
-    fetch("http://localhost:8080/questions/next")
+    fetch("http://localhost:8080/questions")
     .then(res=>res.json())
     .then((result)=>{
       console.log(result)

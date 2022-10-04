@@ -7,12 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-<<<<<<< HEAD
-@CrossOrigin(origins = {"*"}, maxAge = 4800, allowCredentials = "false")
-=======
 import java.util.List;
 
->>>>>>> 699ba7c0e106dee806d4d71aa71269df18bccae3
+
+@CrossOrigin(origins = {"*"}, maxAge = 4800, allowCredentials = "false")
+
+
 @RestController
 @RequestMapping("/questions")
 public class QuestionController {
