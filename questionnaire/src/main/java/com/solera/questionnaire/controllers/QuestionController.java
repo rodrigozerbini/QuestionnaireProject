@@ -20,7 +20,7 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-    private int questionCounter = 0;
+    private int questionCounter = 1;
 
     @PostMapping
     public ResponseEntity<Question> saveQuestion(@RequestBody Question question) {
@@ -34,10 +34,14 @@ public class QuestionController {
 
     @GetMapping("/next")
     public ResponseEntity<Question> nextQuestion() {
+
+        Question question = questionService.getQuestionById((questionCounter));
         int numberOfQuestions = questionService.getQuestions().size();
-        questionCounter = (questionCounter < numberOfQuestions) ? questionCounter + 1 : 1;
-        System.out.println(questionCounter);
-        return ResponseEntity.ok(questionService.getQuestionById((questionCounter)));
+        if (questionCounter < numberOfQuestions) {
+            questionCounter++;
+        }
+        else questionCounter = 1;
+        return ResponseEntity.ok(question);
     }
 
     @GetMapping
