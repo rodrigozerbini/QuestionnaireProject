@@ -25,6 +25,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public void deleteQuestionById(int id) {
-
+        Question question = questionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Question", id));
+        questionRepository.deleteById(id);
     }
 }

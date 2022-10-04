@@ -1,6 +1,7 @@
 package com.solera.questionnaire.services;
 
 import com.solera.questionnaire.models.Answer;
+import org.springframework.http.ResponseEntity;
 
 public interface AnswerService {
 

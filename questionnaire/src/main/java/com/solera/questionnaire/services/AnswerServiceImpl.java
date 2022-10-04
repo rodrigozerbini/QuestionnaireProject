@@ -4,9 +4,14 @@ import com.solera.questionnaire.exceptions.ResourceNotFoundException;
 import com.solera.questionnaire.models.Answer;
 import com.solera.questionnaire.models.Question;
 import com.solera.questionnaire.repositories.AnswerRepository;
-import com.solera.questionnaire.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
+@Service
 public class AnswerServiceImpl implements AnswerService {
 
     @Autowired
@@ -25,6 +30,7 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public void deleteAnswerById(int id) {
-
+        Answer answer = answerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Answer", id));
+        answerRepository.deleteById(id);
     }
 }
