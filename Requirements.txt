@@ -1,0 +1,28 @@
+Requirements
+--------------
+
+INTRO:
+Create a questionnaire app. The user will see the questions one by one. At the end, they will get how much afinity they have to implement blockchain into each of these 5 verticals
+	- DATA
+	- LOGISTICS
+	- IDENTITY VALIDATION
+	- FIDELIZATION
+	- PAYMENTS
+
+ALGORITHM:
+Once the user completes the questionnaire, the answers will be used to compute the affinity. This is how the algorithm works:
+	- Option 1: Boolean question. Example: You answer Yes, and you add +10 to DATA, +5 to PAYMENTS and -5 to LOGISTICS. You answer NO, and you do the opposite
+
+	- Option 2: Numeric question CAN only be an integer in the range 0-10. You add this value directly to the verticals related to that question
+
+	- Option 3: 4 options. First option adds +3.5 to FIDELIZATION option 2 adds +4 to whatever...
+
+Each of the weights of every answer is in the range 0-10 and could have decimnals. At the end, you add every value and divide by ten. This is the score you get for each of the 5 verticals
+
+
+IMPORTANT NOTES:
+	- Assume the number of questions to be arbitrary. The client could add or remove questions at any time. You don't have to create a front-end for that, they will do it using command line.
+	- We need to store the email to contact him/her later.
+	- (Ignore this if you don't have time) The same user cannot use the form more than once. Use his email for authorization.
+	- There is not such a thing as correct answer. We are collecting data from the user, just that.
+	- There are no multiple versions of the form. EVERY question in the database will be shown to the user.
