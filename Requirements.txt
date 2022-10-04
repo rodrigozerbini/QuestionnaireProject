@@ -11,7 +11,8 @@ Create a questionnaire app. The user will see the questions one by one. At the e
 
 ALGORITHM:
 Once the user completes the questionnaire, the answers will be used to compute the affinity. This is how the algorithm works:
-	- Option 1: Boolean question. Example: You answer Yes, and you add +10 to DATA, +5 to PAYMENTS and -5 to LOGISTICS. You answer NO, and you do the opposite
+	- Option 1: Boolean question. Example: You answer Yes, and you add +10 to DATA, -5 to LOGISTICS, +15 to IDENTITY, +10 to FIDELIZATION, -15 to PAYMENTS.
+                                               You answer NO, and you do the opposite (-10 to DATA, etc).
 
 	- Option 2: Numeric question CAN only be an integer in the range 0-10. You add this value directly to the verticals related to that question
 
