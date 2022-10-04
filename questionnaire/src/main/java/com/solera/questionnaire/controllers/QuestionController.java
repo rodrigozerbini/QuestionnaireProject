@@ -34,8 +34,14 @@ public class QuestionController {
 
     @GetMapping("/next")
     public ResponseEntity<Question> nextQuestion() {
+
+        Question question = questionService.getQuestionById((questionCounter));
         int numberOfQuestions = questionService.getQuestions().size();
-        return ResponseEntity.ok(questionService.getQuestionById((questionCounter++) % numberOfQuestions));
+        if (questionCounter < numberOfQuestions) {
+            questionCounter++;
+        }
+        else questionCounter = 1;
+        return ResponseEntity.ok(question);
     }
 
     @GetMapping
