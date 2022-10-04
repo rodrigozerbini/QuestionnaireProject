@@ -30,7 +30,8 @@ public class QuestionController {
 
     @GetMapping("/next")
     public ResponseEntity<Question> nextQuestion() {
-        return ResponseEntity.ok(questionService.getQuestionById(questionCounter++));
+        int numberOfQuestions = questionService.getQuestions().size();
+        return ResponseEntity.ok(questionService.getQuestionById((questionCounter++) % numberOfQuestions));
     }
 
     @GetMapping

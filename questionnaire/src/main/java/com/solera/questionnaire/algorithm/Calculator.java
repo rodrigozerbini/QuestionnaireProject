@@ -28,7 +28,7 @@ public class Calculator {
     private int paymentsScore;
     private List<Boolean> boolAnswers;
 
-    public void calculateScores(List<Boolean> boolAnswers) {
+    public void calculateScores() {
 
         for(boolean boolAnswer : boolAnswers) {
             if (boolAnswer == true) {

@@ -42,11 +42,12 @@ public class AnswerController {
         return answerService.getBoolAnswers();
     }
 
-//    @GetMapping("/results")
-//    public String displayResults() {
-//        List<Boolean> boolAnswers = answerService.getBoolAnswers();
-//
-//        Calculator calculator = new Calculator(boolAnswers);
-//
-//    }
+    @GetMapping("/results")
+    public String displayResults() {
+        List<Boolean> boolAnswers = answerService.getBoolAnswers();
+
+        Calculator calculator = new Calculator(boolAnswers);
+        calculator.calculateScores();
+        return calculator.toString();
+    }
 }
