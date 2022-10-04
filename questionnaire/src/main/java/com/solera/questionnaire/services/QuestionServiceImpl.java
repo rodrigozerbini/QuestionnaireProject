@@ -6,6 +6,8 @@ import com.solera.questionnaire.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class QuestionServiceImpl implements QuestionService {
 
@@ -27,5 +29,10 @@ public class QuestionServiceImpl implements QuestionService {
     public void deleteQuestionById(int id) {
         Question question = questionRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Question", id));
         questionRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Question> getQuestions() {
+        return questionRepository.findAll();
     }
 }

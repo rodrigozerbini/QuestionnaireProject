@@ -11,6 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AnswerServiceImpl implements AnswerService {
 
@@ -32,5 +35,16 @@ public class AnswerServiceImpl implements AnswerService {
     public void deleteAnswerById(int id) {
         Answer answer = answerRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Answer", id));
         answerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Boolean> getBoolAnswers() {
+        List<Answer> answers = answerRepository.findAll();
+        List<Boolean> boolAnswers = new ArrayList<Boolean>();
+
+        for(Answer answer : answers) {
+            boolAnswers.add(answer.getText());
+        }
+        return boolAnswers;
     }
 }

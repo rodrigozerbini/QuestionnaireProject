@@ -1,5 +1,6 @@
 package com.solera.questionnaire.controllers;
 
+import com.solera.questionnaire.algorithm.Calculator;
 import com.solera.questionnaire.models.Answer;
 import com.solera.questionnaire.models.Question;
 import com.solera.questionnaire.services.AnswerService;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/answers")
@@ -33,4 +36,17 @@ public class AnswerController {
         answerService.deleteAnswerById(id);
         return new ResponseEntity<>("Answer deleted successfully", HttpStatus.OK);
     }
+
+    @GetMapping("/boolean")
+    public List<Boolean> getBooleanAnswers() {
+        return answerService.getBoolAnswers();
+    }
+
+//    @GetMapping("/results")
+//    public String displayResults() {
+//        List<Boolean> boolAnswers = answerService.getBoolAnswers();
+//
+//        Calculator calculator = new Calculator(boolAnswers);
+//
+//    }
 }

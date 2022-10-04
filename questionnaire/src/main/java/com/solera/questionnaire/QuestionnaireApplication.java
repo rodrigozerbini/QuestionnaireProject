@@ -11,12 +11,12 @@ public class QuestionnaireApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(QuestionnaireApplication.class, args);
 
-		Calculator calculator = new Calculator();
-
-		calculator.updateScores(true);
-		calculator.updateScores(true);
-		calculator.updateScores(true);
-		System.out.println(calculator.toString());
+//		Calculator calculator = new Calculator();
+//
+//		calculator.updateScores(true);
+//		calculator.updateScores(true);
+//		calculator.updateScores(true);
+//		System.out.println(calculator.toString());
 	}
 
 }

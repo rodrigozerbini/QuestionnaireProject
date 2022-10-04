@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class Calculator {
@@ -25,23 +26,26 @@ public class Calculator {
     private int validationScore;
     private int fidelizationScore;
     private int paymentsScore;
+    private List<Boolean> boolAnswers;
 
-    public void updateScores(boolean answerText) {
-        if(answerText) {
-            dataScore += 10;
-            logisticsScore -= 5;
-            identityScore += 15;
-            validationScore += 10;
-            fidelizationScore += 10;
-            paymentsScore -= 15;
-        }
-        else {
-            dataScore -= 10;
-            logisticsScore += 5;
-            identityScore -= 15;
-            validationScore -= 10;
-            fidelizationScore -= 10;
-            paymentsScore += 15;
+    public void calculateScores(List<Boolean> boolAnswers) {
+
+        for(boolean boolAnswer : boolAnswers) {
+            if (boolAnswer == true) {
+                dataScore += 10;
+                logisticsScore -= 5;
+                identityScore += 15;
+                validationScore += 10;
+                fidelizationScore += 10;
+                paymentsScore -= 15;
+            } else {
+                dataScore -= 10;
+                logisticsScore += 5;
+                identityScore -= 15;
+                validationScore -= 10;
+                fidelizationScore -= 10;
+                paymentsScore += 15;
+            }
         }
     }
 
@@ -57,12 +61,13 @@ public class Calculator {
                 '}';
     }
 
-    public Calculator() {
+    public Calculator(List<Boolean> boolAnswers) {
         this.dataScore = 0;
         this.logisticsScore = 0;
         this.identityScore = 0;
         this.validationScore = 0;
         this.fidelizationScore = 0;
         this.paymentsScore = 0;
+        this.boolAnswers = boolAnswers;
     }
 }
